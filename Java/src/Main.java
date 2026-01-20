@@ -11,6 +11,8 @@ public class Main {
         String jugador1 = sc.next();
         String jugador2 = sc.next();
         int jugadorAzar = random.nextInt(0, 2);
+        boolean juego = true;
+        int casilla;
 
         int [][] tablero = {
                 {0, 0, 0},
@@ -24,5 +26,23 @@ public class Main {
             System.out.println("Empieza " + jugador2);
         }
 
+        System.out.println("===== EXPLICACIÓN =====");
+        System.out.println("El tablero consta de 9 casillas");
+        System.out.println("1 | 2 | 3");
+        System.out.println("4 | 5 | 6");
+        System.out.println("7 | 8 | 9");
+
+        while (juego) {
+            System.out.println("Elige en que casilla quieres empezar");
+            for (int i = 0; i < tablero.length; i++) {
+                for (int j = 0; j < tablero[i].length; j++ ) {
+                    System.out.print(tablero[i][j] + " ");
+                }
+                System.out.println();
+            }
+            casilla = sc.nextInt();
+            int opCasilla = 
+            break;
+        }
     }
 }
