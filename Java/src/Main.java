@@ -18,10 +18,10 @@ public class Main {
         boolean empiezaPj1 = false;
         boolean empiezaPj2 = false;
 
-        int [][] tablero = {
-                {0, 0, 0},
-                {0, 0, 0},
-                {0, 0, 0}
+        String [][] tablero = {
+                {"-", "-", "-"},
+                {"-", "-", "-"},
+                {"-", "-", "-"}
         };
 
         if (jugadorAzar == 0) {
@@ -40,9 +40,11 @@ public class Main {
 
         while (juego) {
             if (empiezaPj1) {
-                System.out.println(jugador1 + " elige en que casilla quieres empezar");
+                System.out.println(jugador1 + " será " + figura1);
+                System.out.println("Elige en que casilla quieres empezar");
             } else if (empiezaPj2) {
-                System.out.println(jugador2 + " elige en que casilla quieres empezar");
+                System.out.println(jugador2 + " será " + figura2);
+                System.out.println("Elige en que casilla quieres empezar");
             }
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++ ) {
@@ -53,8 +55,8 @@ public class Main {
             casilla = sc.nextInt();
             int opFila = (casilla - 1) / 3;
             int opColumna = (casilla - 1) % 3;
+            tablero [opFila][opColumna] = "X";
             break;
-
         }
     }
 }
