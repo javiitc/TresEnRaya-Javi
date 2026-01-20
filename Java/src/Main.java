@@ -39,9 +39,9 @@ public class Main {
         System.out.println("7 | 8 | 9");
 
         while (juego) {
-            if (empiezaPj1 = true) {
+            if (empiezaPj1) {
                 System.out.println(jugador1 + " elige en que casilla quieres empezar");
-            } else if (empiezaPj2 = true) {
+            } else if (empiezaPj2) {
                 System.out.println(jugador2 + " elige en que casilla quieres empezar");
             }
             for (int i = 0; i < tablero.length; i++) {
@@ -54,6 +54,7 @@ public class Main {
             int opFila = (casilla - 1) / 3;
             int opColumna = (casilla - 1) % 3;
             break;
+
         }
     }
 }
