@@ -12,9 +12,11 @@ public class Main {
         String jugador2 = sc.next();
         int jugadorAzar = random.nextInt(0, 2);
 
-        int filas = 3;
-        int columnas = 3;
-        int [][] tablero = new int[filas][columnas];
+        int [][] tablero = {
+                {0, 0, 0},
+                {0, 0, 0},
+                {0, 0, 0}
+        };
 
         if (jugadorAzar == 0) {
             System.out.println("Empieza " + jugador1);
@@ -22,6 +24,5 @@ public class Main {
             System.out.println("Empieza " + jugador2);
         }
 
-        
     }
 }
