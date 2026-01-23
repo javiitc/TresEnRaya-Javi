@@ -10,6 +10,7 @@ public class Main {
         System.out.println("Indica el nombre de los jugadores:");
         String figura1 = "O";
         String figura2 = "X";
+        String figuraActual = " ";
         String jugador1 = sc.next();
         String jugador2 = sc.next();
         int jugadorAzar = random.nextInt(0, 2);
@@ -58,7 +59,7 @@ public class Main {
             casilla = sc.nextInt();
             int opFila = (casilla - 1) / 3;
             int opColumna = (casilla - 1) % 3;
-            tablero [opFila][opColumna] = "X";
+            tablero [opFila][opColumna] = figuraActual;
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++ ) {
                     System.out.print(tablero[i][j] + " ");
@@ -68,9 +69,13 @@ public class Main {
             turno++;
             int operacion = turno % 2;
             if (operacion == 0) {
-                System.out.println();
+                empiezaPj1 = false;
+                empiezaPj2 = true;
+                System.out.println("Turno " + turno + ": Juega " + jugador2);
             } else {
-                System.out.println();
+                empiezaPj2 = false;
+                empiezaPj1 = true;
+                System.out.println("Turno " + turno + ": Juega " + jugador1);
             }
             break;
         }
