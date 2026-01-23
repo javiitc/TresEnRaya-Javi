@@ -88,10 +88,14 @@ public class Main {
             turno++;
             //Comprobaciones
             for (int i = 0; i < tablero.length; i++) {
-                if ((tablero[i][0] == tablero[i][1]) && (tablero[i][0] == tablero[i][2]) ){
-
+                for (int j = 0; j < tablero[i].length; j++) {
+                    if ((tablero[i][0] == tablero[i][1]) && (tablero[i][0] == tablero[i][2]) && (tablero [i][0].equals(figura1) || tablero[i][0].equals(figura2)) ){
+                        System.out.println("====== TRES EN RAYA ======");
+                        System.out.println("Ganador " + jugadorActual);
+                    }
                 }
             }
+            
 
         }
     }
