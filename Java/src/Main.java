@@ -86,8 +86,13 @@ public class Main {
             }
 
             turno++;
+            //Comprobaciones
+            for (int i = 0; i < tablero.length; i++) {
+                if ((tablero[i][0] == tablero[i][1]) && (tablero[i][0] == tablero[i][2]) ){
 
-            
+                }
+            }
+
         }
     }
 }
