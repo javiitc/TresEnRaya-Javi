@@ -17,6 +17,7 @@ public class Main {
         int casilla;
         boolean empiezaPj1 = false;
         boolean empiezaPj2 = false;
+        int turno = 1;
 
         String [][] tablero = {
                 {"-", "-", "-"},
@@ -34,18 +35,20 @@ public class Main {
 
         System.out.println("===== EXPLICACIÓN =====");
         System.out.println("El tablero consta de 9 casillas");
+        System.out.println("Tendrás que señalar la casilla que quieres marcar, y el O/X se pondrá automáticamente dependiendo de que jugador tenga el turno.");
         System.out.println("1 | 2 | 3");
         System.out.println("4 | 5 | 6");
         System.out.println("7 | 8 | 9");
 
+        if (empiezaPj1) {
+            System.out.println(jugador1 + " será " + figura1);
+            System.out.println("Elige en que casilla quieres empezar");
+        } else if (empiezaPj2) {
+            System.out.println(jugador2 + " será " + figura2);
+            System.out.println("Elige en que casilla quieres empezar");
+        }
+
         while (juego) {
-            if (empiezaPj1) {
-                System.out.println(jugador1 + " será " + figura1);
-                System.out.println("Elige en que casilla quieres empezar");
-            } else if (empiezaPj2) {
-                System.out.println(jugador2 + " será " + figura2);
-                System.out.println("Elige en que casilla quieres empezar");
-            }
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++ ) {
                     System.out.print(tablero[i][j] + " ");
@@ -60,6 +63,13 @@ public class Main {
                 for (int j = 0; j < tablero[i].length; j++ ) {
                     System.out.print(tablero[i][j] + " ");
                 }
+                System.out.println();
+            }
+            turno++;
+            int operacion = turno % 2;
+            if (operacion == 0) {
+                System.out.println();
+            } else {
                 System.out.println();
             }
             break;
