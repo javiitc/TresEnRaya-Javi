@@ -11,6 +11,7 @@ public class Main {
         String figura1 = "O";
         String figura2 = "X";
         String figuraActual = " ";
+        String jugadorActual = " ";
         String jugador1 = sc.next();
         String jugador2 = sc.next();
         int jugadorAzar = random.nextInt(0, 2);
@@ -72,10 +73,12 @@ public class Main {
                 empiezaPj1 = false;
                 empiezaPj2 = true;
                 System.out.println("Turno " + turno + ": Juega " + jugador2);
+                figuraActual = figura2;
             } else {
                 empiezaPj2 = false;
                 empiezaPj1 = true;
                 System.out.println("Turno " + turno + ": Juega " + jugador1);
+                figuraActual = figura1;
             }
             break;
         }
