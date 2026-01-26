@@ -20,6 +20,8 @@ public class Main {
         boolean empiezaPj1 = false;
         boolean empiezaPj2 = false;
         int turno = 1;
+        int contadorPartidasJugador1 = 0;
+        int contadorPartidasJugador2 = 0;
 
         String [][] tablero = {
                 {"-", "-", "-"},
@@ -89,14 +91,19 @@ public class Main {
             //Comprobaciones
             for (int i = 0; i < tablero.length; i++) {
                 for (int j = 0; j < tablero[i].length; j++) {
-                    if ((tablero[i][0] == tablero[i][1]) && (tablero[i][0] == tablero[i][2]) && (tablero [i][0].equals(figura1) || tablero[i][0].equals(figura2)) ){
-                        System.out.println("====== TRES EN RAYA ======");
-                        System.out.println("Ganador " + jugadorActual);
+                    if (tablero [i][j].equals(figura1) || tablero [i][j].equals(figura2)) {
+                        if ((tablero[i][j] == tablero[i][1]) && (tablero[i][1] == tablero[i][2])){
+                            System.out.println("====== TRES EN RAYA ======");
+                            System.out.println("Ganador " + jugadorActual);
+                        }
                     }
                 }
             }
-            
 
+            if (contadorPartidasJugador1 == 3 || contadorPartidasJugador2 == 3){
+                System.out.println("======== GANADOR DE TRES EN RAYA ========");
+                System.out.println("           " + jugadorActual);
+            }
         }
     }
 }
