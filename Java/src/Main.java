@@ -38,9 +38,11 @@ public class Main {
             if (jugadorAzar == 0) {
                 System.out.println("Empieza " + jugador1);
                 empiezaPj1 = true;
+                empiezaPj2 = false;
             } else {
                 System.out.println("Empieza " + jugador2);
                 empiezaPj2 = true;
+                empiezaPj1 = false; 
             }
 
             turno = 1;
@@ -102,6 +104,8 @@ public class Main {
 
                 turno++;
                 //Comprobaciones
+                int contadorEmpate = 0;
+
                 for (int i = 0; i < tablero.length; i++) {
                         if (tablero [i][0].equals(figura1) || tablero [i][0].equals(figura2)) {
                             if ((tablero[i][0].equals(tablero[i][1])) && (tablero[i][1].equals(tablero[i][2]))){
@@ -149,6 +153,21 @@ public class Main {
                         contadorPartidasJugador2++;
                         partidaEnCurso = false;
                         break;
+                    }
+                }
+
+                if (partidaEnCurso) {
+                    for  (int i = 0; i < tablero.length; i++) {
+                        for (int j = 0; j < tablero[i].length; j++) {
+                            if (tablero[i][j].equals("-")) {
+                                contadorEmpate++;
+                            }
+                        }
+                    }
+                    if (contadorEmpate == 0) {
+                        System.out.println("========== EMPATE ==========");
+                        System.out.println("No hay ganador en esta ronda");
+                        partidaEnCurso = false;
                     }
                 }
             }
