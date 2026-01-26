@@ -14,7 +14,6 @@ public class Main {
         String jugadorActual = " ";
         String jugador1 = sc.next();
         String jugador2 = sc.next();
-        int jugadorAzar = random.nextInt(0, 2);
         boolean juego = true;
         int casilla;
         boolean empiezaPj1 = false;
@@ -22,14 +21,6 @@ public class Main {
         int turno = 1;
         int contadorPartidasJugador1 = 0;
         int contadorPartidasJugador2 = 0;
-
-        if (jugadorAzar == 0) {
-            System.out.println("Empieza " + jugador1);
-            empiezaPj1 = true;
-        } else {
-            System.out.println("Empieza " + jugador2);
-            empiezaPj2 = true;
-        }
 
         System.out.println("===== EXPLICACIÓN =====");
         System.out.println("El tablero consta de 9 casillas");
@@ -42,6 +33,15 @@ public class Main {
         System.out.println(jugador2 + " será " + figura2);
 
         while (juego) {
+
+            int jugadorAzar = random.nextInt(0, 2);
+            if (jugadorAzar == 0) {
+                System.out.println("Empieza " + jugador1);
+                empiezaPj1 = true;
+            } else {
+                System.out.println("Empieza " + jugador2);
+                empiezaPj2 = true;
+            }
 
             turno = 1;
             boolean partidaEnCurso = true;
@@ -84,6 +84,14 @@ public class Main {
                 casilla = sc.nextInt();
                 int opFila = (casilla - 1) / 3;
                 int opColumna = (casilla - 1) % 3;
+
+                while(!tablero[opFila][opColumna].equals("-")) {
+                    System.out.println("Casilla ocupada, por favor elige otra!");
+                    casilla = sc.nextInt();
+                    opFila = (casilla - 1) / 3;
+                    opColumna = (casilla - 1) % 3;
+                }
+
                 tablero [opFila][opColumna] = figuraActual;
                 for (int i = 0; i < tablero.length; i++) {
                     for (int j = 0; j < tablero[i].length; j++ ) {
@@ -111,6 +119,24 @@ public class Main {
                             }
                         }
                     }
+
+                for (int j = 0; j < tablero.length; j++) {
+                    if (tablero [0][j].equals(figura1) || tablero [0][j].equals(figura2)) {
+                        if ((tablero[0][j].equals(tablero[1][j])) && (tablero[1][j].equals(tablero[2][j]))){
+                            System.out.println("====== TRES EN RAYA ======");
+                            System.out.println("Ganador " + jugadorActual);
+                            if (jugadorActual.equals(jugador1)) {
+                                contadorPartidasJugador1++;
+                                partidaEnCurso = false;
+                                break;
+                            } else  {
+                                contadorPartidasJugador2++;
+                                partidaEnCurso = false;
+                                break;
+                            }
+                        }
+                    }
+                }
 
                 if ((tablero[0][0].equals(figuraActual) && tablero[1][1].equals(figuraActual) && tablero[2][2].equals(figuraActual)) || (tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual))) {
                     System.out.println("====== TRES EN RAYA ======");
