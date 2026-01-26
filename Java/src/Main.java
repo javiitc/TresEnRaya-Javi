@@ -42,7 +42,7 @@ public class Main {
             } else {
                 System.out.println("Empieza " + jugador2);
                 empiezaPj2 = true;
-                empiezaPj1 = false; 
+                empiezaPj1 = false;
             }
 
             turno = 1;
@@ -177,7 +177,6 @@ public class Main {
                 System.out.println("           " + jugadorActual);
                 juego = false;
             }
-
         }
     }
 }
