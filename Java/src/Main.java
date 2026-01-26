@@ -23,12 +23,6 @@ public class Main {
         int contadorPartidasJugador1 = 0;
         int contadorPartidasJugador2 = 0;
 
-        String [][] tablero = {
-                {"-", "-", "-"},
-                {"-", "-", "-"},
-                {"-", "-", "-"}
-        };
-
         if (jugadorAzar == 0) {
             System.out.println("Empieza " + jugador1);
             empiezaPj1 = true;
@@ -48,54 +42,87 @@ public class Main {
         System.out.println(jugador2 + " será " + figura2);
 
         while (juego) {
-            int operacion = turno % 2;
-            if (operacion != 0) {
-                if (empiezaPj1) {
-                    jugadorActual = jugador1;
-                    figuraActual = figura1;
+
+            turno = 1;
+            boolean partidaEnCurso = true;
+            String [][] tablero = {
+                    {"-", "-", "-"},
+                    {"-", "-", "-"},
+                    {"-", "-", "-"}
+            };
+
+            while (partidaEnCurso) {
+
+                int operacion = turno % 2;
+                if (operacion != 0) {
+                    if (empiezaPj1) {
+                        jugadorActual = jugador1;
+                        figuraActual = figura1;
+                    } else {
+                        jugadorActual = jugador2;
+                        figuraActual = figura2;
+                    }
                 } else {
-                    jugadorActual = jugador2;
-                    figuraActual = figura2;
+                    if (empiezaPj1) {
+                        jugadorActual = jugador2;
+                        figuraActual = figura2;
+                    } else {
+                        jugadorActual = jugador1;
+                        figuraActual = figura1;
+                    }
                 }
-            } else {
-                if (empiezaPj1) {
-                    jugadorActual = jugador2;
-                    figuraActual = figura2;
-                } else {
-                    jugadorActual = jugador1;
-                    figuraActual = figura1;
-                }
-            }
 
-            System.out.println("Turno " + turno + ": Juega " + jugadorActual);
-            System.out.println("Selecciona la casilla");
-            for (int i = 0; i < tablero.length; i++) {
-                for (int j = 0; j < tablero[i].length; j++ ) {
-                    System.out.print(tablero[i][j] + " ");
+                System.out.println("Turno " + turno + ": Juega " + jugadorActual);
+                System.out.println("Selecciona la casilla");
+                for (int i = 0; i < tablero.length; i++) {
+                    for (int j = 0; j < tablero[i].length; j++ ) {
+                        System.out.print(tablero[i][j] + " ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
-            }
 
-            casilla = sc.nextInt();
-            int opFila = (casilla - 1) / 3;
-            int opColumna = (casilla - 1) % 3;
-            tablero [opFila][opColumna] = figuraActual;
-            for (int i = 0; i < tablero.length; i++) {
-                for (int j = 0; j < tablero[i].length; j++ ) {
-                    System.out.print(tablero[i][j] + " ");
+                casilla = sc.nextInt();
+                int opFila = (casilla - 1) / 3;
+                int opColumna = (casilla - 1) % 3;
+                tablero [opFila][opColumna] = figuraActual;
+                for (int i = 0; i < tablero.length; i++) {
+                    for (int j = 0; j < tablero[i].length; j++ ) {
+                        System.out.print(tablero[i][j] + " ");
+                    }
+                    System.out.println();
                 }
-                System.out.println();
-            }
 
-            turno++;
-            //Comprobaciones
-            for (int i = 0; i < tablero.length; i++) {
-                for (int j = 0; j < tablero[i].length; j++) {
-                    if (tablero [i][j].equals(figura1) || tablero [i][j].equals(figura2)) {
-                        if ((tablero[i][j] == tablero[i][1]) && (tablero[i][1] == tablero[i][2])){
-                            System.out.println("====== TRES EN RAYA ======");
-                            System.out.println("Ganador " + jugadorActual);
+                turno++;
+                //Comprobaciones
+                for (int i = 0; i < tablero.length; i++) {
+                        if (tablero [i][0].equals(figura1) || tablero [i][0].equals(figura2)) {
+                            if ((tablero[i][0].equals(tablero[i][1])) && (tablero[i][1].equals(tablero[i][2]))){
+                                System.out.println("====== TRES EN RAYA ======");
+                                System.out.println("Ganador " + jugadorActual);
+                                if (jugadorActual.equals(jugador1)) {
+                                    contadorPartidasJugador1++;
+                                    partidaEnCurso = false;
+                                    break;
+                                } else  {
+                                    contadorPartidasJugador2++;
+                                    partidaEnCurso = false;
+                                    break;
+                                }
+                            }
                         }
+                    }
+
+                if ((tablero[0][0].equals(figuraActual) && tablero[1][1].equals(figuraActual) && tablero[2][2].equals(figuraActual)) || (tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual))) {
+                    System.out.println("====== TRES EN RAYA ======");
+                    System.out.println("Ganador " + jugadorActual);
+                    if (jugadorActual.equals(jugador1)) {
+                        contadorPartidasJugador1++;
+                        partidaEnCurso = false;
+                        break;
+                    } else  {
+                        contadorPartidasJugador2++;
+                        partidaEnCurso = false;
+                        break;
                     }
                 }
             }
@@ -103,7 +130,9 @@ public class Main {
             if (contadorPartidasJugador1 == 3 || contadorPartidasJugador2 == 3){
                 System.out.println("======== GANADOR DE TRES EN RAYA ========");
                 System.out.println("           " + jugadorActual);
+                juego = false;
             }
+
         }
     }
 }
