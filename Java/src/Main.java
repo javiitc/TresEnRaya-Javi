@@ -23,6 +23,7 @@ public class Main {
         int contadorPartidasJugador2 = 0;
 
         System.out.println("===== EXPLICACIÓN =====");
+        System.out.println("Ganará el que gane tres rondas");
         System.out.println("El tablero consta de 9 casillas");
         System.out.println("Tendrás que señalar la casilla que quieres marcar, y el O/X se pondrá automáticamente dependiendo de que jugador tenga el turno.");
         System.out.println("1 | 2 | 3");
@@ -174,7 +175,7 @@ public class Main {
 
             if (contadorPartidasJugador1 == 3 || contadorPartidasJugador2 == 3){
                 System.out.println("======== GANADOR DE TRES EN RAYA ========");
-                System.out.println("           " + jugadorActual);
+                System.out.println("                   " + jugadorActual);
                 juego = false;
             }
         }
