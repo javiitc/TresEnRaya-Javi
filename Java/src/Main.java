@@ -157,7 +157,7 @@ public class Main {
                     }
                 }
 
-                 if (!tablero[0][0].equals("-") && tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual)) {
+                 if (!tablero[0][2].equals("-") && tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual)) {
                      System.out.println("====== TRES EN RAYA ======");
                      System.out.println("Ganador " + jugadorActual);
                      if (jugadorActual.equals(jugador1)) {
