@@ -143,7 +143,7 @@ public class Main {
                     }
                 }
 
-                if ((tablero[0][0].equals(figuraActual) && tablero[1][1].equals(figuraActual) && tablero[2][2].equals(figuraActual)) || (tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual))) {
+                if ((!tablero[0][0].equals("-") && tablero[0][0].equals(figuraActual) && tablero[1][1].equals(figuraActual) && tablero[2][2].equals(figuraActual))) {
                     System.out.println("====== TRES EN RAYA ======");
                     System.out.println("Ganador " + jugadorActual);
                     if (jugadorActual.equals(jugador1)) {
@@ -156,6 +156,20 @@ public class Main {
                         break;
                     }
                 }
+
+                 if (!tablero[0][0].equals("-") && tablero[0][2].equals(figuraActual) && tablero [1][1].equals(figuraActual) && tablero[2][0].equals(figuraActual)) {
+                     System.out.println("====== TRES EN RAYA ======");
+                     System.out.println("Ganador " + jugadorActual);
+                     if (jugadorActual.equals(jugador1)) {
+                         contadorPartidasJugador1++;
+                         partidaEnCurso = false;
+                         break;
+                     } else  {
+                         contadorPartidasJugador2++;
+                         partidaEnCurso = false;
+                         break;
+                     }
+                 }
 
                 if (partidaEnCurso) {
                     for  (int i = 0; i < tablero.length; i++) {
